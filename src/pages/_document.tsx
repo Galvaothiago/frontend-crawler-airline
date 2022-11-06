@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
 					<link rel='shortcut icon' href='/clover.png' />
 					<link rel='preconnect' href='https://fonts.googleapis.com' />
 					<link
-						href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300&display=swap'
+						href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;600&display=swap'
 						rel='stylesheet'
 					/>
 				</Head>

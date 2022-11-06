@@ -5,8 +5,8 @@ import {Container} from "./style";
 export const Login = () => {
 	return (
 		<Container>
-			<Sign />
 			<Banner />
+			<Sign />
 		</Container>
 	);
 };

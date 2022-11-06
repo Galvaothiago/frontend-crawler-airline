@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 	height: 100%;
-	flex: 0.3;
+	flex: 0.65;
 	padding: 1rem;
 	display: grid;
 	place-items: center;

@@ -1,8 +1,11 @@
 import styled, {createGlobalStyle} from "styled-components";
 
 export const colors = {
-	background: "#26282A",
+	backgroundMain: "#393d3f",
+	background: "#1d1b1b",
 	textColor: "#EEEEEE",
+	grayLight: "#e6e6e9",
+	grayMedium: "#66666e",
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -10,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: 'Roboto', 'Ubuntu', sans-serif;
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
     }
 
     html {
@@ -23,7 +26,22 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background: colors.background;
-        color: colors.textColor;
+        background: ${colors.backgroundMain};
     }
+`;
+
+export const ContainerGlobal = styled.div`
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+
+	padding: 2.5rem;
+	background-color: ${colors.backgroundMain};
+`;
+
+export const Wrapper = styled.div`
+	width: 100%;
+	height: 100%;
+	max-width: 1420px;
 `;
