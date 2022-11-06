@@ -41,10 +41,15 @@ export const ContainerGlobal = styled.div`
 
 	padding: 2.5rem;
 	background-color: ${colors.backgroundMain};
+
+    @media (max-height: 768px) {
+        padding: 1rem;
+    }
 `;
 
 export const Wrapper = styled.div`
 	width: 100%;
 	height: 100%;
 	max-width: 1420px;
+    max-height: 800px;
 `;

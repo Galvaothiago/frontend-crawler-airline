@@ -7,7 +7,7 @@ export default function Home() {
 		<ContainerGlobal>
 			<Wrapper>
 				<Head>
-					<title>Create Next App</title>
+					<title>Airline Tickets - Bot</title>
 					<meta name='description' content='Sign in to see your jobs airline tickets' />
 				</Head>
 
