@@ -51,5 +51,4 @@ export const Wrapper = styled.div`
 	width: 100%;
 	height: 100%;
 	max-width: 1420px;
-    max-height: 800px;
 `;
