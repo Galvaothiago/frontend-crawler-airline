@@ -50,14 +50,19 @@ export const Container = styled.div`
 		align-items: center;
 		gap: 0.5rem;
 
-		svg {
-			font-size: 1.4rem;
-			cursor: pointer;
-			transition: all 0.2s ease-in-out;
-
-			&:hover {
-				color: ${colors.grayLight};
+		a {
+			text-decoration: none;
+			color: ${colors.grayMedium};
+			svg {
+				font-size: 1.4rem;
+				cursor: pointer;
+				transition: all 0.2s ease-in-out;
+	
+				&:hover {
+					color: ${colors.grayLight};
+				}
 			}
 		}
+		
 	}
 `;

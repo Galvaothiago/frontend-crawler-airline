@@ -10,9 +10,15 @@ export const MadeBy = () => {
 			<label>Developed by</label>
 			<p>Thiago Galvão</p>
 			<footer>
-				<AiFillGithub />
-				<AiFillGitlab />
-				<FaLinkedin />
+				<a href="https://github.com/Galvaothiago" target="_blank" rel="noreferrer">
+					<AiFillGithub />
+				</a>
+				<a href="https://gitlab.com/Galvaothiago" target="_blank" rel="noreferrer">
+					<AiFillGitlab />
+				</a>
+				<a href="https://www.linkedin.com/in/thiago-galvao-155062208/" target="_blank" rel="noreferrer">
+					<FaLinkedin />
+				</a>
 			</footer>
 		</Container>
 	);
