@@ -6,6 +6,9 @@ export const colors = {
 	textColor: "#EEEEEE",
 	grayLight: "#e6e6e9",
 	grayMedium: "#66666e",
+	grayDark: "#3d3b3c",
+	grayDark2: "#252627",
+	blueLight: "#4b88a2",
 };
 
 export const GlobalStyle = createGlobalStyle`
