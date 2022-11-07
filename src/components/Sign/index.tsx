@@ -4,15 +4,24 @@ import {GiCommercialAirplane} from "react-icons/gi";
 import {AiFillSchedule} from "react-icons/ai";
 import {MdAttachMoney} from "react-icons/md";
 import {CgSpinnerTwoAlt} from "react-icons/cg";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const Sign = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 
+	const [key, setKey] = useState("");
+
 	const handleSendCredentials = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
+		if (!key) {
+			setError(true);
+			setErrorMessage("Please, fill the field with your key");
+			return;
+		}
+
 		setLoading(true);
 		setErrorMessage("");
 		setError(false);
@@ -25,6 +34,11 @@ export const Sign = () => {
 		}, 2000);
 	};
 
+	useEffect(() => {
+		setErrorMessage("");
+		setError(false);
+	}, [key]);
+
 	return (
 		<Container>
 			<Title>
@@ -33,7 +47,7 @@ export const Sign = () => {
 			<FormCrendentials errorInputEffect={error}>
 				<h3>To get started enter your key:</h3>
 				<form onSubmit={event => handleSendCredentials(event)}>
-					<input type='password' placeholder='Key' />
+					<input type='password' placeholder='Key' value={key} onChange={event => setKey(event.target.value)} />
 					<button type='submit'>{loading ? <CgSpinnerTwoAlt /> : "Let's go!"}</button>
 				</form>
 				<span>{errorMessage}</span>
