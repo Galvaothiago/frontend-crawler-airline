@@ -10,9 +10,9 @@ export const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 3rem;
-	border-radius: 14px;
+	border-radius: 10px;
 
-	background-color: ${colors.background};
+	background-color: ${colors.grayDark2};
 	transition: all 0.1s ease-in-out;
 
 	-webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
@@ -30,6 +30,7 @@ export const Container = styled.div`
 	svg {
 		font-size: 2rem;
 		color: ${colors.blueLight};
+		opacity: 0.4;
 	}
 
 	p {
@@ -38,7 +39,6 @@ export const Container = styled.div`
 		color: ${colors.grayMedium};
 		text-align: center;
 		transition: all 0.1s ease-in-out;
-		padding-bottom: .5rem;
-
+		padding-bottom: 0.5rem;
 	}
 `;

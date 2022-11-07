@@ -9,6 +9,7 @@ export const colors = {
 	grayDark: "#3d3b3c",
 	grayDark2: "#252627",
 	blueLight: "#4b88a2",
+	blueMedium: "#012a4a",
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -42,9 +43,9 @@ export const ContainerGlobal = styled.div`
 	padding: 2.5rem;
 	background-color: ${colors.backgroundMain};
 
-    @media (max-height: 768px) {
-        padding: 1rem;
-    }
+	@media (max-height: 768px) {
+		padding: 1rem;
+	}
 `;
 
 export const Wrapper = styled.div`
