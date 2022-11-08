@@ -10,6 +10,7 @@ export const colors = {
 	grayDark2: "#252627",
 	blueLight: "#4b88a2",
 	blueMedium: "#012a4a",
+	blueLightOpacity: "rgba(75, 136, 162, 0.4)",
 	redMedium: "#9a031e",
 };
 
