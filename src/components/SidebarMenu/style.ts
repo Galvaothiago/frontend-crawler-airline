@@ -1,6 +1,8 @@
 import styled, {keyframes} from "styled-components";
 import {colors} from "../../global";
 
+const transitionDelay = ".6s";
+
 const pulse = keyframes`
    0% {
     transform: scale(.95);
@@ -54,17 +56,17 @@ export const Container = styled.div`
 	background: rgba(0, 0, 0, 0.75);
 	transition: all 0.6s ease-in-out;
 
-	div:nth-child(2) {
+	nav {
 		display: none;
 	}
 
 	&:hover {
 		background: rgba(0, 0, 0, 0.55);
-		div:nth-child(1) {
+		div {
 			display: none;
 		}
 
-		div:nth-child(2) {
+		nav {
 			display: flex;
 		}
 	}
@@ -98,15 +100,7 @@ export const ContainerPulseIcon = styled.div`
 	}
 `;
 
-export const ContainerMenu = styled.div`
-	width: 100%;
-	height: 100%;
-	transition: all 0.6s ease-in-out;
-
-	display: flex;
-`;
-
-export const FlightOption = styled.ul`
+export const FlightOption = styled.nav`
 	width: 100%;
 	height: 100%;
 
@@ -117,56 +111,75 @@ export const FlightOption = styled.ul`
 	align-items: flex-start;
 
 	gap: 0.5rem;
+	transition-duration: 1s;
+	transition: all 0.6s ease-in-out;
 
-	div {
-		width: 3rem;
-		height: 3rem;
+	&:hover {
+		backdrop-filter: blur(2px);
+		/* background-color: ${colors.blueLight}; */
+		a:nth-child(1) {
+			opacity: 1;
+			transition-delay: ${transitionDelay} * 1;
+		}
 
-		border-radius: 3px;
+		a:nth-child(2) {
+			opacity: 1;
+			transition-delay: ${transitionDelay} * 4;
+		}
 
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		/* place-items: center; */
-		/* justify-content: center; */
-		/* gap: 0.8rem; */
-		padding-left: 0.8rem;
+		a:nth-child(3) {
+			opacity: 1;
+			transition-delay: ${transitionDelay} * 8;
+		}
+		a:nth-child(4) {
+			opacity: 1;
+			transition-delay: ${transitionDelay} * 12;
+		}
+	}
+`;
 
-		background-color: ${colors.blueLight};
-		cursor: pointer;
+export const Menu = styled.a`
+	width: 3rem;
+	height: 3rem;
+
+	border-radius: 3px;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	padding-left: 0.8rem;
+
+	background-color: ${colors.blueLight};
+	cursor: pointer;
+	transition: all 0.6s ease-in-out;
+	/* transition-duration: 2s; */
+	opacity: 0;
+
+	-webkit-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
+	box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
+
+	p {
+		opacity: 0;
+		transition-delay: 1s;
 		transition: all 0.6s ease-in-out;
+	}
 
-		-webkit-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
-		-moz-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
-		box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
+	svg {
+		font-size: 1.2rem;
+	}
+
+	&:hover {
+		width: 10rem;
 
 		p {
-			/* width: 15rem; */
-			opacity: 0;
-			transition-delay: 1s;
-			transition: all 0.6s ease-in-out;
+			opacity: 1;
+			animation: ${textComingEffect} 1s ease-in-out;
 		}
 
 		svg {
 			font-size: 1.2rem;
-			/* margin-left: 0.1rem; */
-		}
-
-		&:hover {
-			width: 10rem;
-
-			p {
-				opacity: 1;
-				/* width: 100%; */
-				/* display: block; */
-				animation: ${textComingEffect} 1s ease-in-out;
-				/* transition-delay: 0.8s; */
-			}
-
-			svg {
-				font-size: 1.2rem;
-				/* margin-left: 0.1rem; */
-			}
 		}
 	}
 `;

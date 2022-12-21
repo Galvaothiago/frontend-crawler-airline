@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {Container, ContainerMenu, ContainerPulseIcon, FlightOption, Overlay} from "./style";
+import {Container, ContainerPulseIcon, FlightOption, Menu, Overlay} from "./style";
 import {MdOutlineFlight} from "react-icons/md";
 import {AiFillHome, AiOutlineSearch, AiOutlineUserAdd} from "react-icons/ai";
 
@@ -13,25 +13,24 @@ export const SidebarMenu = () => {
 						<span></span>
 					</span>
 				</ContainerPulseIcon>
-				<ContainerMenu>
-					<FlightOption>
-						<div>
-							<MdOutlineFlight />
-							<span>Agende Jobs</span>
-						</div>
-						<div>
-							<AiFillHome />
-							<span>Home</span>
-						</div>
-						<div>
-							<AiOutlineSearch />
-							<span>pesquise seu job</span>
-						</div>
-						<div>
-							<AiOutlineUserAdd />
-						</div>
-					</FlightOption>
-				</ContainerMenu>
+				<FlightOption>
+					<Menu>
+						<MdOutlineFlight />
+						<span>Jobs</span>
+					</Menu>
+					<Menu>
+						<AiFillHome />
+						<span>Home</span>
+					</Menu>
+					<Menu>
+						<AiOutlineSearch />
+						<span>Search</span>
+					</Menu>
+					<Menu>
+						<AiOutlineUserAdd />
+						<span>User</span>
+					</Menu>
+				</FlightOption>
 			</Container>
 		</Overlay>
 	);
