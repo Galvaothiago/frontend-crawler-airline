@@ -11,3 +11,9 @@ export const Container = styled.div`
 	-moz-box-shadow: -1px 0px 22px -1px rgba(0, 0, 0, 0.77);
 	box-shadow: -1px 0px 22px -1px rgba(0, 0, 0, 0.77);
 `;
+
+export const Main = styled.main`
+	width: 100%;
+	height: 100%;
+	flex: 1;
+`;

@@ -180,7 +180,7 @@ export const GroupMenu = styled.div`
 	justify-content: flex-start;
 	align-items: flex-start;
 	gap: 0.1rem;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 1.5s ease-in-out;
 
 	opacity: 0;
 `;

@@ -13,6 +13,10 @@ export const colors = {
 	blueMedium: "#012a4a",
 	blueLightOpacity: "rgba(75, 136, 162, 0.4)",
 	redMedium: "#9a031e",
+	orangeMedium: "#ECA869",
+	orangeMediumOpacity: "rgba(236, 168, 105, 0.4)",
+	greenMedium: "#4b8b2e",
+	greenMediumOpacity: "rgba(75, 139, 46, 0.4)",
 };
 
 export const GlobalStyle = createGlobalStyle`

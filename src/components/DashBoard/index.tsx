@@ -1,11 +1,11 @@
 import {SidebarMenu} from "../SidebarMenu";
-import {Container} from "./style";
+import {Container, Main} from "./style";
 
 export const Dashboard = ({children}: any) => {
 	return (
 		<Container>
 			<SidebarMenu />
-			<main>{children}</main>
+			<Main>{children}</Main>
 		</Container>
 	);
 };
