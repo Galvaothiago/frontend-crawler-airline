@@ -1,7 +1,7 @@
 import styled, {keyframes} from "styled-components";
 import {colors} from "../../global";
 
-const transitionDelay = ".6s";
+const transitionDelay = 0.1;
 
 const pulse = keyframes`
    0% {
@@ -33,6 +33,10 @@ interface IBackgroundImgProps {
 	url: string;
 }
 
+interface IBackgrounSelected {
+	selected: boolean;
+}
+
 export const Overlay = styled.div<IBackgroundImgProps>`
 	height: 100%;
 	width: 7rem;
@@ -53,8 +57,21 @@ export const Container = styled.div`
 	display: grid;
 	place-items: center;
 
+	position: relative;
+
 	background: rgba(0, 0, 0, 0.75);
 	transition: all 0.6s ease-in-out;
+
+	img {
+		width: 4.5rem;
+		height: 4.5rem;
+		filter: brightness(0.5);
+
+		position: absolute;
+		top: 0.5rem;
+		transform: translateX(-50%, -50%);
+		transition: all 0.6s ease-in-out;
+	}
 
 	nav {
 		display: none;
@@ -62,7 +79,7 @@ export const Container = styled.div`
 
 	&:hover {
 		background: rgba(0, 0, 0, 0.55);
-		div {
+		> div {
 			display: none;
 		}
 
@@ -104,82 +121,66 @@ export const FlightOption = styled.nav`
 	width: 100%;
 	height: 100%;
 
-	padding-left: 0.8rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
 
-	gap: 0.5rem;
-	transition-duration: 1s;
-	transition: all 0.6s ease-in-out;
+	/* justify-content: flex-start; */
+	/* align-items: flex-start; */
+	padding-top: 4.5rem;
 
 	&:hover {
-		backdrop-filter: blur(2px);
-		/* background-color: ${colors.blueLight}; */
-		a:nth-child(1) {
+		> div {
 			opacity: 1;
-			transition-delay: ${transitionDelay} * 1;
-		}
-
-		a:nth-child(2) {
-			opacity: 1;
-			transition-delay: ${transitionDelay} * 4;
-		}
-
-		a:nth-child(3) {
-			opacity: 1;
-			transition-delay: ${transitionDelay} * 8;
-		}
-		a:nth-child(4) {
-			opacity: 1;
-			transition-delay: ${transitionDelay} * 12;
 		}
 	}
 `;
 
-export const Menu = styled.a`
-	width: 3rem;
-	height: 3rem;
-
-	border-radius: 3px;
+export const Menu = styled.a<IBackgrounSelected>`
+	width: 100%;
+	height: 2.5rem;
 
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	gap: 0.5rem;
 
-	padding-left: 0.8rem;
-
-	background-color: ${colors.blueLight};
 	cursor: pointer;
-	transition: all 0.6s ease-in-out;
-	/* transition-duration: 2s; */
-	opacity: 0;
+	transition: all 0.1s ease-in-out;
+
+	background-color: ${({selected}) => (selected ? colors.blueLightOpacity : "transparent")};
 
 	-webkit-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
 	box-shadow: -8px -1px 9px -6px rgba(0, 0, 0, 0.75);
+	/* transition-delay: 0.5s; */
 
-	p {
-		opacity: 0;
-		transition-delay: 1s;
-		transition: all 0.6s ease-in-out;
+	span {
+		font-size: 1.15rem;
+		color: ${colors.grayLight};
 	}
 
 	svg {
-		font-size: 1.2rem;
+		width: 1.1rem;
+		height: 1.1rem;
+		margin-left: 1rem;
+
+		color: ${colors.grayLight};
 	}
 
 	&:hover {
-		width: 10rem;
-
-		p {
-			opacity: 1;
-			animation: ${textComingEffect} 1s ease-in-out;
-		}
-
-		svg {
-			font-size: 1.2rem;
-		}
+		background-color: ${colors.blueLightOpacity};
 	}
+`;
+
+export const GroupMenu = styled.div`
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0.1rem;
+	transition: opacity 1s ease-in-out;
+
+	opacity: 0;
 `;

@@ -6,7 +6,7 @@ export const Login = ({onLogin}: any) => {
 	return (
 		<Container>
 			<Banner />
-			<Sign />
+			<Sign onLogin={onLogin} />
 		</Container>
 	);
 };

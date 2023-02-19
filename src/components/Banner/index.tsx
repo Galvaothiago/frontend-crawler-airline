@@ -4,15 +4,15 @@ import {PositionIndicator} from "./PositionIndicator";
 import {Container, Overlay} from "./style";
 
 const backgroundsPath = [
-	"assets/airplane1.jpg",
 	"assets/airplane2.jpg",
+	"assets/airplane1.jpg",
 	"assets/airplane3.jpg",
 	"assets/airplane4.jpg",
 	"assets/airplane5.jpg",
 ];
 
 export const Banner = () => {
-	const [backgroundUrl, setBackgroundUrl] = useState(backgroundsPath[-1]);
+	const [backgroundUrl, setBackgroundUrl] = useState(backgroundsPath[backgroundsPath.length - 1]);
 	const [currentImg, setCurrentImg] = useState(0);
 
 	const getUrlImage = () => {

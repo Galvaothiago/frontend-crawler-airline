@@ -5,15 +5,20 @@ import {AiFillSchedule} from "react-icons/ai";
 import {MdAttachMoney} from "react-icons/md";
 import {CgSpinnerTwoAlt} from "react-icons/cg";
 import {useEffect, useState} from "react";
+import api from "../../service/api";
 
-export const Sign = () => {
+interface ISign {
+	onLogin: (statusApi: boolean) => void;
+}
+
+export const Sign = ({onLogin}: ISign) => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const [key, setKey] = useState("");
 
-	const handleSendCredentials = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (!key) {
@@ -26,12 +31,29 @@ export const Sign = () => {
 		setErrorMessage("");
 		setError(false);
 
-		// to get response from API here
-		setTimeout(() => {
+		try {
+			const response = await api.post("key", {
+				params: {
+					key,
+				},
+			});
+
+			const {hasAccess} = response.data;
+
+			if (!hasAccess) {
+				setLoading(false);
+				setError(true);
+				setErrorMessage("Invalid credentials");
+				return;
+			}
+
+			onLogin(hasAccess);
+		} catch (err) {
+			console.log(err);
 			setLoading(false);
 			setError(true);
 			setErrorMessage("Invalid credentials");
-		}, 2000);
+		}
 	};
 
 	useEffect(() => {
