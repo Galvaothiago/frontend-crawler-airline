@@ -4,11 +4,11 @@ import {PositionIndicator} from "./PositionIndicator";
 import {Container, Overlay} from "./style";
 
 const backgroundsPath = [
-	"assets/airplane2.jpg",
 	"assets/airplane1.jpg",
 	"assets/airplane3.jpg",
 	"assets/airplane4.jpg",
 	"assets/airplane5.jpg",
+	"assets/airplane2.jpg",
 ];
 
 export const Banner = () => {
