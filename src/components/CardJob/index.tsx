@@ -2,7 +2,11 @@ import {Job} from "../../pages/jobs";
 import {IATAConvert} from "../../utils/IATATONameCity";
 import {Container, ContainerInfo, ImgSideA, ImgSideB} from "./style";
 
-export const CardJob = ({job}: any) => {
+interface IJob {
+	job: Job;
+}
+
+export const CardJob = ({job}: IJob) => {
 	const {arrivalAirport, arrivalDate, departureDate, departureAirport, timesExecuted, timesToRun} = job;
 
 	const cityNameArrival = IATAConvert(arrivalAirport);
