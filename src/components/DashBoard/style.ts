@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import {colors} from "../../global";
+import {colors} from "../../global-style";
 
 export const Container = styled.div`
 	width: 100%;
+	/* max-height: 100vh; */
 	height: 100%;
 	display: flex;
 	background-color: ${colors.background};
@@ -14,7 +15,7 @@ export const Container = styled.div`
 
 export const Main = styled.main`
 	width: 100%;
-	height: auto;
-	overflow-y: auto;
+	height: 100%;
+	/* overflow-y: auto; */
 	flex: 1;
 `;

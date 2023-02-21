@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "../../global";
+import {colors} from "../../global-style";
 
 interface IContainerInfo {
 	completed?: boolean;

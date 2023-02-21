@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "../../../global";
+import {colors} from "../../../global-style";
 
 export const Container = styled.div`
 	height: 12%;
@@ -57,12 +57,11 @@ export const Container = styled.div`
 				font-size: 1.4rem;
 				cursor: pointer;
 				transition: all 0.2s ease-in-out;
-	
+
 				&:hover {
 					color: ${colors.grayLight};
 				}
 			}
 		}
-		
 	}
 `;

@@ -2,7 +2,7 @@ import {NextPage} from "next";
 import Head from "next/head";
 import Link from "next/link";
 import {useCallback, useState} from "react";
-import {ContainerGlobal, Wrapper} from "../global";
+import {ContainerGlobal, Wrapper} from "../global-style";
 import {Dashboard} from "./DashBoard";
 import {Login} from "./Login";
 

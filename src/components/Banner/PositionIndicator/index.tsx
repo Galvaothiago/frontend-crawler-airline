@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {colors} from "../../../global";
+import {colors} from "../../../global-style";
 import {Container} from "./style";
 
 interface IPositionIndicator {

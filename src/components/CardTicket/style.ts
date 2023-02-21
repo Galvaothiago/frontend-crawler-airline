@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "../../global";
+import {colors} from "../../global-style";
 
 export const Container = styled.div`
 	max-width: 35rem;
@@ -12,15 +12,10 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	transition: all 0.2s ease-in-out;
-	transform: scale(0.95);
 
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
 	-moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
 	box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
-
-	&:hover {
-		transform: scale(1);
-	}
 
 	> div:nth-child(1) {
 		width: 100%;

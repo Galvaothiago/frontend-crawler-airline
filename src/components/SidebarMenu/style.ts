@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import {colors} from "../../global";
+import {colors} from "../../global-style";
 
 const transitionDelay = 0.1;
 

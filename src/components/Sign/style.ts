@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import {colors} from "../../global";
+import {colors} from "../../global-style";
 
 interface IInputProp {
 	errorInputEffect: boolean;
