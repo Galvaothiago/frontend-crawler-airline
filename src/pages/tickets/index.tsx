@@ -2,12 +2,12 @@ import {Container, ContainerFilter, ContainerMain, Wrapper} from "./style";
 import {TitlePages} from "../../components/TitlePages";
 import {Filter} from "../../components/Filter";
 import {GiCommercialAirplane} from "react-icons/gi";
-import {CgArrowsExchangeAlt} from "react-icons/cg";
 import api from "../../service/api";
 import {useEffect, useState} from "react";
 import {CardTicket} from "../../components/CardTicket";
+import {convertDate} from "../../utils/convertDate";
 
-const options = ["Today", "Yestarday", "2 days ago"];
+const options = ["Today", "Yesterday", "2 days ago"];
 
 export interface ITicket {
 	id: string;
@@ -22,13 +22,13 @@ export interface ITicket {
 
 const TicketsPage = () => {
 	const [tickes, setTickets] = useState<ITicket[]>([]);
+	const [optionsDate, setOptionsDate] = useState<string>(options[0]);
 
 	const getAllTickets = async () => {
 		try {
-			const {data} = await api.get(`/airline-tickets/2023-02-19/full`);
+			const {data} = await api.get(`/airline-tickets/${convertDate(optionsDate)}/full`);
 
 			setTickets(data);
-			console.log(data);
 		} catch (err) {
 			console.log(err);
 		}
@@ -36,13 +36,13 @@ const TicketsPage = () => {
 
 	useEffect(() => {
 		getAllTickets();
-	}, []);
+	}, [optionsDate]);
 
 	return (
 		<Container>
 			<TitlePages icon={<GiCommercialAirplane />} title='Tickets' />
 			<ContainerFilter>
-				<Filter options={options} />
+				<Filter options={options} setOption={setOptionsDate} />
 			</ContainerFilter>
 			<ContainerMain>
 				<h1>Less price</h1>

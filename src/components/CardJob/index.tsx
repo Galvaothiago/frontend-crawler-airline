@@ -1,5 +1,5 @@
 import {Job} from "../../pages/jobs";
-import {IATAConvert} from "../../utils/IATATONameCity";
+import {IATAConvert} from "../../utils/IATANameCity";
 import {Container, ContainerInfo, ImgSideA, ImgSideB} from "./style";
 
 interface IJob {

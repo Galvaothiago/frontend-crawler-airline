@@ -6,29 +6,36 @@ export const Container = styled.div`
 	width: 100%;
 	flex: 1;
 	height: 14rem;
-	border-radius: 0.5rem;
 	background-color: ${colors.background};
 	cursor: pointer;
 
 	display: flex;
 	flex-direction: column;
+	transition: all 0.2s ease-in-out;
+	transform: scale(0.95);
 
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
 	-moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
 	box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.55);
+
+	&:hover {
+		transform: scale(1);
+	}
 
 	> div:nth-child(1) {
 		width: 100%;
 		flex: 0.75;
 
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		padding: 0.5rem 1rem;
+		gap: 0.5rem;
+		padding: 1rem;
 
 		img {
-			width: 6rem;
-			height: 6rem;
+			width: 4rem !important;
+			height: 4rem !important;
 			border-radius: 50%;
 			outline: 1px solid ${colors.blueLight};
 
@@ -37,14 +44,15 @@ export const Container = styled.div`
 			filter: brightness(0.8);
 		}
 
-		div {
-			width: 100%;
+		> div {
+			width: fit-content;
 			height: 6rem;
 			padding: 0 1rem;
 
 			display: flex;
 			align-items: flex-start;
-			justify-content: space-between;
+			justify-content: center;
+			gap: 0.75rem;
 
 			svg {
 				width: 3rem;

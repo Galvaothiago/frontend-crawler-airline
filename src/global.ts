@@ -49,6 +49,7 @@ export const ContainerGlobal = styled.div`
 
 	padding: 2.5rem;
 	background-color: ${colors.backgroundMain};
+	overflow-x: hidden;
 
 	@media (max-height: 768px) {
 		padding: 1rem;

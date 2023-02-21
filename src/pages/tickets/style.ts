@@ -6,6 +6,7 @@ export const Container = styled.div`
 	height: 100%;
 
 	padding: 2.5rem;
+	overflow-y: hidden;
 `;
 
 export const ContainerFilter = styled.div`
@@ -19,10 +20,12 @@ export const ContainerFilter = styled.div`
 
 export const ContainerMain = styled.main`
 	width: 100%;
-	height: calc(100% -2rem);
+	max-height: calc(100% - 15rem);
+	height: 100%;
 	display: grid;
 
 	margin-top: 2rem;
+	padding: 1rem 0.5rem;
 
 	h1 {
 		font-size: 1.5rem;
@@ -36,6 +39,7 @@ export const Wrapper = styled.div`
 	grid-column-gap: 15px;
 	grid-row-gap: 15px;
 
+	overflow-y: auto;
 	margin-top: 2rem;
 
 	> div {
