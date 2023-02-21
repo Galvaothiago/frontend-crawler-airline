@@ -7,7 +7,7 @@ interface IContainerInfo {
 
 export const Container = styled.div`
 	height: 6rem;
-	max-width: 38rem;
+	max-width: 45rem;
 	width: 100%;
 	flex: 1;
 
@@ -51,7 +51,7 @@ export const ImgSideB = styled.img`
 `;
 
 export const ContainerInfo = styled.div<IContainerInfo>`
-	max-width: 26rem;
+	max-width: 33rem;
 	width: 100%;
 	height: 100%;
 	background-color: ${colors.background};

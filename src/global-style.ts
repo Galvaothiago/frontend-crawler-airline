@@ -59,5 +59,5 @@ export const ContainerGlobal = styled.div`
 export const Wrapper = styled.div`
 	width: 100%;
 	height: 100%;
-	max-width: 1420px;
+	max-width: 1620px;
 `;

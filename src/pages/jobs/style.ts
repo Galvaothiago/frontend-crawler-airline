@@ -29,4 +29,11 @@ export const Wrapper = styled.div`
 	grid-row-gap: 15px;
 
 	margin-top: 2rem;
+
+	@media (max-width: 1420px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+	}
 `;
