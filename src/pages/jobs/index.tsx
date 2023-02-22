@@ -40,7 +40,7 @@ const JobsPage = () => {
 		<Container>
 			<TitlePages title='Jobs' icon={<BsGearFill />} />
 			<ContainerFilter>
-				<Filter options={options} />
+				<Filter options={options} setOption={() => {}} />
 			</ContainerFilter>
 			<Main>
 				<Wrapper>

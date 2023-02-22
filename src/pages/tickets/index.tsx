@@ -6,6 +6,7 @@ import api from "../../service/api";
 import {useEffect, useState} from "react";
 import {CardTicket} from "../../components/CardTicket";
 import {convertDate} from "../../utils/convertDate";
+import {Pagination} from "../../components/Pagination";
 
 const options = ["Today", "Yesterday", "2 days ago"];
 
@@ -23,6 +24,9 @@ export interface ITicket {
 const TicketsPage = () => {
 	const [tickes, setTickets] = useState<ITicket[]>([]);
 	const [optionsDate, setOptionsDate] = useState<string>(options[0]);
+	const [dataFilterPagination, setDataFilterPagination] = useState<ITicket[]>([]);
+
+	const [pageFilter, setPageFilter] = useState<number>(1);
 
 	const getAllTickets = async () => {
 		try {
@@ -38,6 +42,15 @@ const TicketsPage = () => {
 		getAllTickets();
 	}, [optionsDate]);
 
+	useEffect(() => {
+		setDataFilterPagination([]);
+		const filterPagination = tickes.slice((pageFilter - 1) * 4, pageFilter * 4);
+
+		setDataFilterPagination(filterPagination);
+	}, [pageFilter, tickes]);
+
+	console.log({dataFilterPagination});
+
 	return (
 		<Container>
 			<TitlePages icon={<GiCommercialAirplane />} title='Tickets' />
@@ -45,12 +58,14 @@ const TicketsPage = () => {
 				<Filter options={options} setOption={setOptionsDate} />
 			</ContainerFilter>
 			<ContainerMain>
-				<h1>Less price</h1>
 				<Wrapper>
-					{tickes.map(ticket => (
+					{dataFilterPagination.map(ticket => (
 						<CardTicket key={ticket.id} ticket={ticket} />
 					))}
 				</Wrapper>
+				<div>
+					<Pagination setPage={setPageFilter} total={tickes.length} />
+				</div>
 			</ContainerMain>
 		</Container>
 	);

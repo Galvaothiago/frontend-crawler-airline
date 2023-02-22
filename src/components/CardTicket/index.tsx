@@ -1,6 +1,6 @@
 import {CgArrowsExchangeAlt} from "react-icons/cg";
 import {ITicket} from "../../pages/tickets";
-import {Container} from "./style";
+import {Container, ContainerCenter, ContainerFooter, WrapperText} from "./style";
 
 interface ICardTicketProp {
 	ticket: ITicket;
@@ -9,7 +9,13 @@ interface ICardTicketProp {
 export const CardTicket = ({ticket}: ICardTicketProp) => {
 	const logo = [`/assets/${ticket.company?.toLowerCase()}.png`];
 
-	const {arrivalDate, priceTotal, departureDate} = ticket;
+	const {arrivalDate, priceTotal, departureDate, id} = ticket;
+
+	const dayWeekDeparture = departureDate.split(" ")[0];
+	const dayWeekArrival = arrivalDate.split(" ")[0];
+
+	const dateExtractedDeparture = departureDate.split(" ")[1];
+	const dateExtractedArrival = arrivalDate.split(" ")[1];
 
 	const visitedDateFormated = new Date(ticket.createdAt).toLocaleDateString("pt-BR", {
 		day: "2-digit",
@@ -29,17 +35,30 @@ export const CardTicket = ({ticket}: ICardTicketProp) => {
 		<Container>
 			<div>
 				<img src={logo[0]} alt='logo da gol airlines' />
-				<div>
-					<span>{departureDate}</span>
-					<CgArrowsExchangeAlt />
-					<span>{arrivalDate}</span>
-				</div>
 			</div>
 			<div>
-				<span>{`Visited at: ${visitedDateFormated}`}</span>
-				<span>
-					Price: <b>{totalValue}</b>
-				</span>
+				<span>id: {id}</span>
+				<ContainerCenter>
+					<WrapperText>
+						<b>{dayWeekDeparture}</b>
+						<span>{dateExtractedDeparture}</span>
+					</WrapperText>
+					<CgArrowsExchangeAlt />
+					<WrapperText>
+						<b>{dayWeekArrival}</b>
+						<span>{dateExtractedArrival}</span>
+					</WrapperText>
+				</ContainerCenter>
+				<ContainerFooter>
+					<div>
+						<label>Visited at:</label>
+						<span>{visitedDateFormated}</span>
+					</div>
+					<div>
+						<label>Price:</label>
+						<span>{totalValue}</span>
+					</div>
+				</ContainerFooter>
 			</div>
 		</Container>
 	);
