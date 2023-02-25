@@ -82,5 +82,7 @@ export function IATAConvert(IATA: string) {
 			return "Marabá";
 		case "CZS":
 			return "Cruzeiro do Sul";
+		case "FLL":
+			return "Fort Lauderdale";
 	}
 }

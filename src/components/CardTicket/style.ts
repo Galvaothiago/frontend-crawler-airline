@@ -2,10 +2,10 @@ import styled from "styled-components";
 import {colors} from "../../global-style";
 
 export const Container = styled.div`
-	max-width: 40rem;
+	max-width: 38rem;
 	width: 100%;
 	flex: 1;
-	height: 14rem;
+	height: 12.5rem;
 	background-color: ${colors.background};
 	cursor: pointer;
 

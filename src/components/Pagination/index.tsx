@@ -1,6 +1,6 @@
 import {Button, Container} from "./style";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const Pagination = ({total, setPage}: any) => {
 	const [currentPage, setCurrentPage] = useState<number>(1);
@@ -36,6 +36,14 @@ export const Pagination = ({total, setPage}: any) => {
 			setDisablePrevious(true);
 		}
 	};
+
+	useEffect(() => {
+		if (total === 0) {
+			setDisableNext(true);
+		} else {
+			setDisableNext(false);
+		}
+	}, [total]);
 
 	return (
 		<Container>

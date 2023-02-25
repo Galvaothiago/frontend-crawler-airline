@@ -1,5 +1,6 @@
 import {CgArrowsExchangeAlt} from "react-icons/cg";
 import {ITicket} from "../../pages/tickets";
+import {truncateMainText} from "../../utils/common";
 import {Container, ContainerCenter, ContainerFooter, WrapperText} from "./style";
 
 interface ICardTicketProp {
@@ -16,6 +17,8 @@ export const CardTicket = ({ticket}: ICardTicketProp) => {
 
 	const dateExtractedDeparture = departureDate.split(" ")[1];
 	const dateExtractedArrival = arrivalDate.split(" ")[1];
+
+	const idTruncate = truncateMainText(id);
 
 	const visitedDateFormated = new Date(ticket.createdAt).toLocaleDateString("pt-BR", {
 		day: "2-digit",
@@ -37,7 +40,7 @@ export const CardTicket = ({ticket}: ICardTicketProp) => {
 				<img src={logo[0]} alt='logo da gol airlines' />
 			</div>
 			<div>
-				<span>id: {id}</span>
+				<span title={id}>ID: {idTruncate}</span>
 				<ContainerCenter>
 					<WrapperText>
 						<b>{dayWeekDeparture}</b>

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import {colors} from "../../global-style";
 
+interface IContainerJob extends React.HTMLAttributes<HTMLSpanElement> {
+	isActive: boolean;
+}
+
 export const Container = styled.div`
 	width: 100%;
 	height: 100%;
 
-	padding: 2.5rem;
+	padding: 1rem 2.5rem 2.5rem 2.5rem;
 	overflow-y: hidden;
 `;
 
@@ -42,6 +46,72 @@ export const Wrapper = styled.div`
 	grid-column-gap: 2rem;
 	grid-row-gap: 2rem;
 
-	/* margin-top: 2rem; */
 	height: max-content;
+`;
+
+export const ContainerJobList = styled.div`
+	width: 100%;
+	max-height: 4rem;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	background-color: ${colors.blueLightOpacity};
+	border: 1px solid ${colors.blueLight};
+
+	padding: 0.5rem 1rem;
+
+	> span {
+		width: 10rem;
+		font-size: 0.85rem;
+		color: ${colors.textColor};
+	}
+
+	> div {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+`;
+
+export const ContainerJob = styled.span<IContainerJob>`
+	max-width: 10rem;
+	width: 100%;
+	font-size: 0.85rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: ${colors.blueLight};
+
+	position: relative;
+
+	padding: 0.25rem 0.5rem;
+	transform: ${props => (props.isActive ? "scale(1.05)" : "scale(.95)")};
+	transition: all 0.1s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		filter: ${props => (props.isActive ? "" : "brightness(0.9)")};
+		transform: ${props => (props.isActive ? "scale(1.05)" : "scale(1)")};
+	}
+	border: ${props => (props.isActive ? `1px solid ${colors.blueMedium}` : "")};
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: ${props => (props.isActive ? "block" : "none")};
+		position: absolute;
+		top: -0.75rem;
+		left: 0.25rem;
+		color: ${colors.blueMedium};
+	}
+
+	p {
+		font-size: 0.7rem;
+		margin-top: 2px;
+	}
 `;
