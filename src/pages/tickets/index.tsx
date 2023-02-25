@@ -35,35 +35,53 @@ export interface IJob {
 }
 
 const TicketsPage = () => {
-	const [tickes, setTickets] = useState<ITicket[]>([]);
+	const [tickets, setTickets] = useState<ITicket[]>([]);
+	const [loadingTickets, setLoadingTickets] = useState<boolean>(false);
 	const [jobs, setJobs] = useState<IJob[]>([]);
+	const [loadingJob, setLoadingJob] = useState<boolean>(false);
 	const [selectedJob, setSelectedJob] = useState<IJob | null>(jobs[0]);
 	const [optionsDate, setOptionsDate] = useState<string>(options[0]);
 	const [dataFilterPagination, setDataFilterPagination] = useState<ITicket[]>([]);
 
 	const [pageFilter, setPageFilter] = useState<number>(1);
 
-	const getAllTickets = async () => {
+	const getAllJobs = async () => {
 		try {
-			const [data, dataJob] = await Promise.all([
-				api.get(`/airline-tickets/${convertDate(optionsDate)}/full`, {
-					params: {
-						jobId: selectedJob?.id,
-					},
-				}),
-				api.get("/jobs"),
-			]);
+			setLoadingJob(true);
+			const {data} = await api.get("/jobs");
 
-			setTickets(data.data);
-			setJobs(dataJob.data);
+			setJobs(data);
 		} catch (err) {
 			console.log(err);
+		} finally {
+			setLoadingJob(false);
+		}
+	};
+
+	const getAllTickets = async () => {
+		try {
+			setLoadingTickets(true);
+			const {data} = await api.get(`/airline-tickets/${convertDate(optionsDate)}/full`, {
+				params: {
+					jobId: selectedJob?.id,
+				},
+			});
+
+			setTickets(data);
+		} catch (err) {
+			console.log(err);
+		} finally {
+			setLoadingTickets(false);
 		}
 	};
 
 	useEffect(() => {
-		setSelectedJob(jobs[0]);
+		getAllJobs();
 	}, []);
+
+	useEffect(() => {
+		setSelectedJob(jobs[0]);
+	}, [jobs]);
 
 	useEffect(() => {
 		getAllTickets();
@@ -71,10 +89,10 @@ const TicketsPage = () => {
 
 	useEffect(() => {
 		setDataFilterPagination([]);
-		const filterPagination = tickes.slice((pageFilter - 1) * 4, pageFilter * 4);
+		const filterPagination = tickets.slice((pageFilter - 1) * 4, pageFilter * 4);
 
 		setDataFilterPagination(filterPagination);
-	}, [pageFilter, tickes]);
+	}, [pageFilter, tickets]);
 
 	return (
 		<Container>
@@ -113,14 +131,14 @@ const TicketsPage = () => {
 					</div>
 				</ContainerJobList>
 				<Wrapper>
-					{tickes.length > 0 ? (
+					{tickets.length > 0 ? (
 						dataFilterPagination.map(ticket => <CardTicket key={ticket.id} ticket={ticket} />)
 					) : (
 						<div>is empty</div>
 					)}
 				</Wrapper>
 				<div>
-					<Pagination setPage={setPageFilter} total={tickes.length} />
+					<Pagination setPage={setPageFilter} total={tickets.length} />
 				</div>
 			</ContainerMain>
 		</Container>

@@ -20,7 +20,7 @@ function MyAppLayout({children}: {children: React.ReactNode}) {
 					<title>Airline Tickets - Bot</title>
 					<meta name='description' content='Sign in to see your jobs airline tickets' />
 				</Head>
-				{true ? <Dashboard children={children} /> : <Login onLogin={handleLogin} />}
+				{hasCredentials ? <Dashboard children={children} /> : <Login onLogin={handleLogin} />}
 			</Wrapper>
 		</ContainerGlobal>
 	);
