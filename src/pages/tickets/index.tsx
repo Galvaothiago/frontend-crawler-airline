@@ -123,7 +123,7 @@ const TicketsPage = () => {
 									key={job.id}
 								>
 									<div>{`${job.departureAirport} x ${job.arrivalAirport}`}</div>
-									<p>{`${arrivalDateFormat} à ${departureDateFormat}`}</p>
+									<p>{`${departureDateFormat} à ${arrivalDateFormat}`}</p>
 									<BsPinAngleFill />
 								</ContainerJob>
 							);
