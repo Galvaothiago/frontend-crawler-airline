@@ -1,5 +1,19 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import {colors} from "../../global-style";
+
+const airplaneComming = keyframes`
+	0% {
+		opacity: 0;
+		transform: scale(.65) translateX(-300px);
+	} 30% {
+		opacity: 1;
+		transform: scale(.65) translateX(0);
+	} 100% {
+		opacity: 1;
+		transform: scale(.65) translateX(0);
+	} 
+
+`;
 
 interface IContainerJob extends React.HTMLAttributes<HTMLSpanElement> {
 	isActive: boolean;
@@ -113,5 +127,21 @@ export const ContainerJob = styled.span<IContainerJob>`
 	p {
 		font-size: 0.7rem;
 		margin-top: 2px;
+	}
+`;
+
+export const ContainerEmptyTicket = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		transform: scale(0.65);
+		filter: drop-shadow(-18px -5px 14px #000) brightness(0.55);
+		animation: ${airplaneComming} 2s ease-in-out;
+		transition: all 1s ease-in-out;
 	}
 `;

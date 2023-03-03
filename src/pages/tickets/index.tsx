@@ -1,14 +1,16 @@
-import {Container, ContainerFilter, ContainerJob, ContainerJobList, ContainerMain, Wrapper} from "./style";
+import {Container, ContainerEmptyTicket, ContainerFilter, ContainerJob, ContainerJobList, ContainerMain, Wrapper} from "./style";
 import {TitlePages} from "../../components/TitlePages";
 import {Filter} from "../../components/Filter";
 import {GiCommercialAirplane} from "react-icons/gi";
 import api from "../../service/api";
-import {useEffect, useState} from "react";
+import {Context, useEffect, useState} from "react";
 import {CardTicket} from "../../components/CardTicket";
 import {convertDate} from "../../utils/convertDate";
 import {Pagination} from "../../components/Pagination";
 import {IATAConvert} from "../../utils/IATANameCity";
 import {BsPinAngleFill} from "react-icons/bs";
+import Image from "next/image";
+import {getServers} from "dns";
 
 const options = ["Today", "Yesterday", "2 days ago"];
 
@@ -45,6 +47,8 @@ const TicketsPage = () => {
 
 	const [pageFilter, setPageFilter] = useState<number>(1);
 
+	const hasData = tickets.length > 0;
+
 	const getAllJobs = async () => {
 		try {
 			setLoadingJob(true);
@@ -54,7 +58,9 @@ const TicketsPage = () => {
 		} catch (err) {
 			console.log(err);
 		} finally {
-			setLoadingJob(false);
+			{
+				hasData && setLoadingJob(false);
+			}
 		}
 	};
 
@@ -130,19 +136,32 @@ const TicketsPage = () => {
 						})}
 					</div>
 				</ContainerJobList>
-				<Wrapper>
-					{tickets.length > 0 ? (
-						dataFilterPagination.map(ticket => <CardTicket key={ticket.id} ticket={ticket} />)
-					) : (
-						<div>is empty</div>
-					)}
-				</Wrapper>
-				<div>
-					<Pagination setPage={setPageFilter} total={tickets.length} />
-				</div>
+				{hasData ? (
+					<Wrapper>
+						{dataFilterPagination.map(ticket => {
+							return <CardTicket key={ticket.id} ticket={ticket} />;
+						})}
+					</Wrapper>
+				) : (
+					<ContainerEmptyTicket>
+						<img
+							src='/assets/airplane-empty-tickets.png'
+							alt="Airplane in the air carring a flag on the bottom part, written 'no tickets'"
+						/>
+					</ContainerEmptyTicket>
+				)}
+				<div>{hasData && <Pagination setPage={setPageFilter} total={tickets.length} />}</div>
 			</ContainerMain>
 		</Container>
 	);
+};
+
+export const getServerSideProps = async (context: any) => {
+	return {
+		props: {
+			servers: getServers(),
+		},
+	};
 };
 
 export default TicketsPage;
