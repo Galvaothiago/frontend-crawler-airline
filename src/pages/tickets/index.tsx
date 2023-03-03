@@ -47,7 +47,7 @@ const TicketsPage = () => {
 
 	const [pageFilter, setPageFilter] = useState<number>(1);
 
-	const hasData = tickets.length > 0;
+	const hasData = tickets?.length > 0;
 
 	const getAllJobs = async () => {
 		try {
@@ -66,6 +66,7 @@ const TicketsPage = () => {
 
 	const getAllTickets = async () => {
 		try {
+			console.log(convertDate(optionsDate));
 			setLoadingTickets(true);
 			const {data} = await api.get(`/airline-tickets/${convertDate(optionsDate)}/full`, {
 				params: {
@@ -95,7 +96,7 @@ const TicketsPage = () => {
 
 	useEffect(() => {
 		setDataFilterPagination([]);
-		const filterPagination = tickets.slice((pageFilter - 1) * 4, pageFilter * 4);
+		const filterPagination = tickets?.slice((pageFilter - 1) * 4, pageFilter * 4);
 
 		setDataFilterPagination(filterPagination);
 	}, [pageFilter, tickets]);
@@ -104,7 +105,7 @@ const TicketsPage = () => {
 		<Container>
 			<TitlePages icon={<GiCommercialAirplane />} title='Tickets' />
 			<ContainerFilter>
-				<Filter options={options} setOption={setOptionsDate} />
+				<Filter options={options} setOption={setOptionsDate} isButtonDate={true} />
 			</ContainerFilter>
 			<ContainerMain>
 				<ContainerJobList>
@@ -154,14 +155,6 @@ const TicketsPage = () => {
 			</ContainerMain>
 		</Container>
 	);
-};
-
-export const getServerSideProps = async (context: any) => {
-	return {
-		props: {
-			servers: getServers(),
-		},
-	};
 };
 
 export default TicketsPage;

@@ -30,3 +30,24 @@ export const Button = styled.button<IBorderProp>`
 		filter: brightness(0.9);
 	}
 `;
+
+export const InputCalender = styled.input`
+	width: fit-content;
+	height: 2rem;
+
+	padding: 0.5rem 1rem;
+	margin-left: 0.5rem;
+
+	border: none;
+
+	color: ${colors.textColor};
+	font-size: 1rem;
+	background-color: ${colors.background};
+
+	&::-webkit-calendar-picker-indicator {
+		background-image: url("/calender.png");
+		background-size: 25px 25px;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+`;

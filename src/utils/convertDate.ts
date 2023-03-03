@@ -9,6 +9,8 @@ export const convertDate = (date: string) => {
 		case "2 days ago":
 			return new Date(new Date().setDate(new Date().getDate() - 2)).toLocaleDateString().replaceAll("/", "-");
 		default:
+			const fragmentsArr = date.split("-");
+			date = `${fragmentsArr[1]}-${fragmentsArr[2]}-${fragmentsArr[0]}`;
 			return date;
 	}
 };
