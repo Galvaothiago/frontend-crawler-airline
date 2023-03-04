@@ -10,8 +10,6 @@ export const Filter = ({options, setOption, isButtonDate}: IOptionsProps) => {
 	const [filter, setFilter] = useState<string>(options[0]);
 	const [] = useState<Date>();
 
-	console.log("filter", filter);
-
 	return (
 		<Container>
 			{options.map((option, index) => (
@@ -29,7 +27,9 @@ export const Filter = ({options, setOption, isButtonDate}: IOptionsProps) => {
 			{isButtonDate && (
 				<InputCalender
 					type='date'
+					border={filter === "date"}
 					onChange={e => {
+						setFilter("date");
 						setOption(e.target.value);
 					}}
 				/>

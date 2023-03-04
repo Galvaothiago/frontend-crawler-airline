@@ -38,15 +38,15 @@ export const ContainerFilter = styled.div`
 
 export const ContainerMain = styled.main`
 	width: 100%;
-	max-height: calc(100% - 5rem);
+	max-height: calc(100% - 4rem);
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: space-between;
 
-	padding-bottom: 2rem;
-	margin-top: 2rem;
+	padding-bottom: 1.25rem;
+	margin-top: 1rem;
 
 	h1 {
 		font-size: 1.5rem;
@@ -76,6 +76,7 @@ export const ContainerJobList = styled.div`
 	border: 1px solid ${colors.blueLight};
 
 	padding: 0.5rem 1rem;
+	margin-bottom: 0.5rem;
 
 	> span {
 		width: 10rem;

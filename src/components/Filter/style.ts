@@ -7,7 +7,7 @@ interface IBorderProp {
 
 export const Container = styled.div`
 	width: auto;
-	height: auto;
+	height: 2.5rem;
 
 	-webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -16,6 +16,7 @@ export const Container = styled.div`
 
 export const Button = styled.button<IBorderProp>`
 	padding: 0.5rem 1rem;
+	height: 100%;
 	border: none;
 	background: ${colors.background};
 	color: #f1f1f1;
@@ -31,14 +32,14 @@ export const Button = styled.button<IBorderProp>`
 	}
 `;
 
-export const InputCalender = styled.input`
+export const InputCalender = styled.input<IBorderProp>`
 	width: fit-content;
-	height: 2rem;
 
 	padding: 0.5rem 1rem;
 	margin-left: 0.5rem;
 
 	border: none;
+	border-bottom: ${({border}) => (border ? `3px solid ${colors.blueLightOpacity}` : "")};
 
 	color: ${colors.textColor};
 	font-size: 1rem;
