@@ -14,6 +14,7 @@ export const colors = {
 	blueMedium: "#012a4a",
 	blueLightOpacity: "rgba(75, 136, 162, 0.4)",
 	redMedium: "#9a031e",
+	redMediumOpacity: "rgba(154, 3, 30, 0.4)",
 	orangeMedium: "#ECA869",
 	orangeMediumOpacity: "rgba(236, 168, 105, 0.4)",
 	greenMedium: "#4b8b2e",

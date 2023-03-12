@@ -3,9 +3,10 @@ import {colors} from "../../global-style";
 
 interface IContainerInfo {
 	completed?: boolean;
+	isJobSelected?: boolean;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<IContainerInfo>`
 	height: 6rem;
 	max-width: 45rem;
 	width: 100%;
@@ -16,6 +17,8 @@ export const Container = styled.div`
 	justify-content: center;
 
 	position: relative;
+	outline: 2px solid ${({isJobSelected}) => (isJobSelected ? colors.blueLight : "transparent")};
+	outline-offset: 4px;
 
 	background-color: ${colors.background};
 

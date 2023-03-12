@@ -14,3 +14,10 @@ export const convertDate = (date: string) => {
 			return date;
 	}
 };
+
+export const formatDatePTBR = (date: string) => {
+	if (!date) return "";
+	const newDate = new Intl.DateTimeFormat("pt-BR", {month: "short", day: "2-digit", year: "2-digit"}).format(new Date(date));
+
+	return newDate;
+};

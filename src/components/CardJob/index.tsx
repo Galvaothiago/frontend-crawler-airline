@@ -4,20 +4,31 @@ import {Container, ContainerInfo, ImgSideA, ImgSideB} from "./style";
 
 interface IJob {
 	job: Job;
+	onSelectedJob?: (job: Job) => void;
+	jobSelected?: Job;
 }
 
-export const CardJob = ({job}: IJob) => {
+export const CardJob = ({job, onSelectedJob, jobSelected}: IJob) => {
 	const {arrivalAirport, arrivalDate, departureDate, departureAirport, timesExecuted, timesToRun} = job;
 
 	const cityNameArrival = IATAConvert(arrivalAirport);
 	const cityNameDeparture = IATAConvert(departureAirport);
 
-	const arrivalDateFormat = new Intl.DateTimeFormat("en", {month: "short", day: "2-digit"}).format(new Date(arrivalDate));
-	const departureDateFormat = new Intl.DateTimeFormat("en", {month: "short", day: "2-digit"}).format(new Date(departureDate));
+	const arrivalDateFormat = new Intl.DateTimeFormat("pt-BR", {month: "short", day: "2-digit"}).format(new Date(arrivalDate));
+	const departureDateFormat = new Intl.DateTimeFormat("pt-BR", {month: "short", day: "2-digit"}).format(
+		new Date(departureDate),
+	);
 
 	const imgs = [`/city/${arrivalAirport.toLowerCase()}.jpg`, `/city/${departureAirport.toLowerCase()}.jpg`];
+
+	const handleClickCard = () => {
+		if (onSelectedJob) {
+			onSelectedJob(job);
+		}
+	};
+
 	return (
-		<Container>
+		<Container onClick={handleClickCard} isJobSelected={job?.id === jobSelected?.id}>
 			<ImgSideA src={imgs[1]} />
 			<ContainerInfo completed={timesExecuted >= timesToRun}>
 				<div>

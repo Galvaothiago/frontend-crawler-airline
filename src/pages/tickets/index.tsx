@@ -66,7 +66,6 @@ const TicketsPage = () => {
 
 	const getAllTickets = async () => {
 		try {
-			console.log(convertDate(optionsDate));
 			setLoadingTickets(true);
 			const {data} = await api.get(`/airline-tickets/${convertDate(optionsDate)}/full`, {
 				params: {
