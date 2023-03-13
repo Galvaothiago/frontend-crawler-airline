@@ -30,12 +30,12 @@ const options2 = [
 	{
 		icon: <AiOutlineSearch />,
 		title: "New Ticket",
-		link: "/new-ticket",
+		link: "/newTicket",
 	},
 	{
 		icon: <AiOutlineUserAdd />,
 		title: "New job",
-		link: "/new-job",
+		link: "/newJob",
 	},
 ];
 export const SidebarMenu = () => {
@@ -70,7 +70,7 @@ export const SidebarMenu = () => {
 					<GroupMenu>
 						{options2.map((option, index) => {
 							return (
-								<Link href='/' key={index} legacyBehavior>
+								<Link href={option.link} key={index} legacyBehavior>
 									<Menu
 										selected={option.title === selectedOption}
 										onClick={() => handleSelectOption(option.title)}
