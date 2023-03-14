@@ -20,13 +20,15 @@ const NewJob = () => {
 	const [check3, setCheck3] = useState(false);
 
 	const [messageLabel, setMessageLabel] = useState<string>("");
+	const [valueCheck, setValueCheck] = useState<string>("standardA");
 
 	const inputs = {
 		departureAirport: departureInput,
 		arrivalAirport: arrivalInput,
-		departureDate: formatDateToAPI(departureDateInput),
-		arrivalDate: formatDateToAPI(arrivalDateInput),
+		departureDate: departureDateInput,
+		arrivalDate: arrivalDateInput,
 		timesToRun: timesToExecute,
+		alternativeDateType: valueCheck,
 	};
 
 	const handleSendJob = async () => {
@@ -55,17 +57,25 @@ const NewJob = () => {
 		setDepartureDateInput("");
 		setArrivalDateInput("");
 		setTimesToExecute(25);
+		setCheck3(false);
+		setCheck2(false);
+		setCheck1(true);
 	};
 
 	useEffect(() => {
 		if (check1) {
 			setMessageLabel("generates dates decrementing one day at a time");
+			setValueCheck("standardA");
 		} else if (check2) {
 			setMessageLabel("generates dates decrementing two day at a times");
+			setValueCheck("standardB");
 		} else if (check3) {
 			setMessageLabel("generates dates decrementing three day at a time");
+			setValueCheck("standardC");
 		}
 	}, [check1, check2, check3]);
+
+	console.log({inputs});
 
 	return (
 		<Container>

@@ -24,7 +24,7 @@ export const formatDatePTBR = (date: string) => {
 
 export const formatDateToAPI = (date: string) => {
 	if (!date) return "";
-	const dates = date.split("/");
+	const dates = date.split("-");
 
 	return `${dates[2]}-${dates[1]}-${dates[0]}`;
 };
