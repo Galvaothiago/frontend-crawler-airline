@@ -13,7 +13,7 @@ import {useCallback, useEffect, useState} from "react";
 import {IATAConvert} from "../../utils/IATANameCity";
 import {formatDatePTBR} from "../../utils/convertDate";
 
-const options = ["to execute", "done", "all"];
+const options = ["all", "to execute", "done"];
 
 export interface Job {
 	id: string;
@@ -42,9 +42,12 @@ const JobsPage = () => {
 		}
 	};
 
-	const handleSelectJob = useCallback((job: Job) => {
-		setSelectedJob(job);
-	}, [jobs]);
+	const handleSelectJob = useCallback(
+		(job: Job) => {
+			setSelectedJob(job);
+		},
+		[jobs],
+	);
 
 	const deleteJob = async (id: string) => {
 		try {
